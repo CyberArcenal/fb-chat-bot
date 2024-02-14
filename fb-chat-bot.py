@@ -675,15 +675,7 @@ class ChatBot(Client):
                   thread_type=thread_type)
 
 
-cookies = {
-    "sb": "xasyYmAoy1tRpMGYvLxgkHBF",
-    "fr": "0NxayJuewRHQ30OX3.AWVJwIYNh0Tt8AJv6kSwDamhkoM.BiMrVd.Iu.AAA.0.0.BiMtVZ.AWXMVaiHrpQ",
-    "c_user": "",
-    "datr": "xasyYs51GC0Lq5H5lvXTl5zA",
-    "xs": ""
-}
-
-
+cookies = json.loads(open("cookies.json", "r").read())
 client = ChatBot("",
                  "", session_cookies=cookies)
 print(client.isLoggedIn())
