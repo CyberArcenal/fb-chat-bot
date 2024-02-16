@@ -419,14 +419,14 @@ class ChatBot(Client):
        
         try:
 
-            if ("search pdf" in msg):
+            if ("search pdf" in msg.lower()):
                 searchFiles(self)
             elif ("chatgpt" in msg):
                 query = " ".join(msg.split(" ")[1:])
                 reply = chatGPT(self, query)
                 sendQuery()
 
-            elif("download youtube" in msg):
+            elif("download youtube" in msg.lower()):
                 headers = {
                     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}
                 link = "".join(msg.split()[-3:])
@@ -452,29 +452,29 @@ class ChatBot(Client):
                 self.sendRemoteFiles(
                     file_urls=final_link, message=None, thread_id=thread_id, thread_type=thread_type)
             elif("search image" in msg):
-                imageSearch(self, msg)
+                imageSearch(self, msg.lower())
 
-            elif("program to" in msg):
+            elif("program to" in msg.lower()):
                 programming_solution(self, msg)
-            elif("translate" in msg):
+            elif("translate" in msg.lower()):
                 reply = translator(self, msg, msg.split()[-1])
 
                 sendQuery()
-            elif "weather of" in msg:
+            elif "weather of" in msg.lower():
                 indx = msg.index("weather of")
                 query = msg[indx+11:]
                 reply = weather(query)
                 sendQuery()
-            elif "corona of" in msg:
+            elif "corona of" in msg.lower():
                 corona_details(msg.split()[2])
-            elif ("calculus" in msg):
+            elif ("calculus" in msg.lower()):
                 stepWiseCalculus(" ".join(msg.split(" ")[1:]))
-            elif ("algebra" in msg):
+            elif ("algebra" in msg.lower()):
                 stepWiseAlgebra(" ".join(msg.split(" ")[1:]))
-            elif ("query" in msg):
+            elif ("query" in msg.lower()):
                 stepWiseQueries(" ".join(msg.split(" ")[1:]))
 
-            elif "find" in msg or "solve" in msg or "evaluate" in msg or "calculate" in msg or "value" in msg or "convert" in msg or "simplify" in msg or "generate" in msg:
+            elif "find" in msg.lower() or "solve" in msg.lower() or "evaluate" in msg.lower() or "calculate" in msg.lower() or "value" in msg.lower() or "convert" in msg.lower() or "simplify" in msg.lower() or "generate" in msg.lower():
                 app_id = "Y98QH3-24PWX83VGA"
                 client = wolframalpha.Client(app_id)
                 query = msg.split()[1:]
@@ -483,80 +483,80 @@ class ChatBot(Client):
                 reply = f'Answer: {answer.replace("sqrt", "√")}'
                 sendQuery()
 
-            elif ("search user" in msg or "search friend" in msg):
+            elif ("search user" in msg.lower() or "search friend" in msg.lower()):
                 searchForUsers(self)
 
-            elif("mute conversation" in msg):
+            elif("mute conversation" in msg.lower()):
                 try:
                     self.muteThread(mute_time=-1, thread_id=author_id)
                     reply = "muted 🔕"
                     sendQuery()
                 except:
                     pass
-            elif ("busy" in msg):
+            elif ("busy" in msg.lower()):
                 reply = "Nobody is busy. Only things are prioritized."
                 sendMsg()
-            elif("help" in msg):
+            elif("help" in msg.lower()):
                 reply = "Sure! What should I do?"
                 sendMsg()
-            elif("clever" in msg):
+            elif("clever" in msg.lower()):
                 reply = "Yes, i am clever. hope you will be clever soon."
                 sendMsg()
-            elif("crazy" in msg):
+            elif("crazy" in msg.lower()):
                 reply = "Anything wrong about that."
                 sendMsg()
-            elif ("are funny" in msg):
+            elif ("are funny" in msg.lower()):
                 reply = "No. I am not. You are."
                 sendMsg()
-            elif ("marry me" in msg):
+            elif ("marry me" in msg.lower()):
                 reply = "Yes, if you are nice and kind girl. But if you are boy RIP."
                 sendMsg()
-            elif ("you from" in msg):
+            elif ("you from" in msg.lower()):
                 reply = "I am from Nepal. Currently living in Kathmandu"
                 sendMsg()
-            elif ("you sure" in msg):
+            elif ("you sure" in msg.lower()):
                 reply = "Yes. I'm sure."
                 sendMsg()
-            elif ("great" in msg):
+            elif ("great" in msg.lower()):
                 reply = "Thanks!"
                 sendMsg()
-            elif ("no problem" in msg):
+            elif ("no problem" in msg.lower()):
                 reply = "Okay😊🙂"
                 sendMsg()
-            elif ("thank you" in msg):
+            elif ("thank you" in msg.lower()):
                 reply = "You're welcome😊🙂"
                 sendMsg()
-            elif ("thanks" in msg):
+            elif ("thanks" in msg.lower()):
                 reply = "You're welcome🙂"
                 sendMsg()
-            elif ("well done" in msg):
+            elif ("well done" in msg.lower()):
                 reply = "Thanks🙂"
                 sendMsg()
-            elif ("wow" in msg):
+            elif ("wow" in msg.lower()):
                 reply = "🙂😊"
                 sendMsg()
-            elif ("wow" in msg):
+            elif ("wow" in msg.lower()):
                 reply = "🙂😊"
                 sendMsg()
-            elif ("bye" in msg):
+            elif ("bye" in msg.lower()):
                 reply = "bye👋"
                 sendMsg()
-            elif ("good morning" in msg):
+            elif ("good morning" in msg.lower()):
                 reply = "Good Morning🌅🌺"
                 sendMsg()
-            elif ("good night" in msg):
+            elif ("good night" in msg.lower()):
                 reply = "good night🌃🌙"
                 sendMsg()
-            elif ("good night" in msg or msg == "gn"):
+            elif ("good night" in msg.lower() or msg.lower() == "gn"):
                 reply = "good night🌃🌙"
                 sendMsg()
-            elif ("hello" in msg):
+            elif ("hello" in msg.lower()):
                 reply = "Hi"
                 sendMsg()
-            elif ("hello" in msg or "hlo" in msg):
+            elif ("hello" in msg.lower() or "hlo" in msg.lower()):
                 reply = "Hi"
                 sendMsg()
-            elif (msg == "hi"):
+            elif (msg.lower() == "hi"):
                 reply = "Hello! How can I help you?"
                 sendMsg()
 
