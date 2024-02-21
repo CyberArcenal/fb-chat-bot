@@ -9,7 +9,6 @@ import math
 import sqlite3
 from bs4 import BeautifulSoup
 import os
-import openai
 import concurrent.futures
 from difflib import SequenceMatcher, get_close_matches
 
@@ -151,7 +150,6 @@ class ChatBot(Client):
                         answer = answer.replace("sqrt", "√")
 
                         if(thread_type == ThreadType.USER):
-                            f
                             self.sendRemoteFiles(
                                 file_urls=answer, message=None, thread_id=thread_id, thread_type=ThreadType.USER)
                         elif(thread_type == ThreadType.GROUP):
@@ -403,28 +401,28 @@ class ChatBot(Client):
                     self.send(Message(text=f'{file_name}\n Link: {file_url}'),
                               thread_id=thread_id, thread_type=ThreadType.USER)
 
-        def chatGPT(self, query):
-            openai.api_key = "YOUR_API_KEY"
+        # def chatGPT(self, query):
+        #     openai.api_key = "YOUR_API_KEY"
 
-            response = openai.Completion.create(
-                model="text-davinci-003",
-                prompt=query,
-                temperature=0.15,
-                max_tokens=3000,
-                top_p=1.0,
-                frequency_penalty=0.0,
-                presence_penalty=0
-            )
-            return (response["choices"][0]["text"])
+        #     response = openai.Completion.create(
+        #         model="text-davinci-003",
+        #         prompt=query,
+        #         temperature=0.15,
+        #         max_tokens=3000,
+        #         top_p=1.0,
+        #         frequency_penalty=0.0,
+        #         presence_penalty=0
+        #     )
+        #     return (response["choices"][0]["text"])
        
         try:
 
             if ("search pdf" in msg.lower()):
                 searchFiles(self)
-            elif ("chatgpt" in msg):
-                query = " ".join(msg.split(" ")[1:])
-                reply = chatGPT(self, query)
-                sendQuery()
+            # elif ("chatgpt" in msg):
+            #     query = " ".join(msg.split(" ")[1:])
+            #     reply = chatGPT(self, query)
+            #     sendQuery()
 
             elif("download youtube" in msg.lower()):
                 headers = {
